@@ -1,26 +1,15 @@
 package J002xibonacci;
 
+import java.util.Arrays;
+
 class Xbonacci {
     double[] tribonacci(double[] s, int n) {
-        if (n == 0) {
-            return new double[]{};
-        }
-        return getTribonacciSequence(s, n);
-    }
+        double[] tritab = Arrays.copyOf(s, n);
 
-    private double[] getTribonacciSequence(double[] s, int n) {
-        double[] result = new double[n];
-        for (int i = 0; i < n; i++) {
-            if (i <= 2) {
-                result[i] = s[i];
-            } else {
-                result[i] = getSequenceElement(result, i);
-            }
+        for (int i = 3; i < n; i++) {
+            tritab[i] = tritab[i - 1] + tritab[i - 2] + tritab[i - 3];
         }
-        return result;
-    }
 
-    private double getSequenceElement(double[] subResult, int i) {
-        return subResult[i - 1] + subResult[i - 2] + subResult[i - 3];
+        return tritab;
     }
 }
