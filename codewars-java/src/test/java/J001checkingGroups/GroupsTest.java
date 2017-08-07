@@ -1,4 +1,4 @@
-package K01checkingGroups;
+package J001checkingGroups;
 
 
 import junitparams.JUnitParamsRunner;
