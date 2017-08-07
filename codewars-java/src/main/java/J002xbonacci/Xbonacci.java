@@ -1,4 +1,4 @@
-package J002xibonacci;
+package J002xbonacci;
 
 import java.util.Arrays;
 
