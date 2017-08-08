@@ -9,17 +9,14 @@ public class Kata {
     public static int dontGiveMeFive(int start, int end) {
         return (int) (long) IntStream.rangeClosed(start, end)
                 .map(number -> number > 0 ? number : -number)
-                .filter(number -> {
-                    int numberAccumulator;
-                    while (number != 0) {
-                        numberAccumulator = number % 10;
-                        number = number / 10;
-                        if (numberAccumulator == DIGIT_TO_FIND) {
-                            return false;
-                        }
-                    }
-                    return true;
-                })
+                .filter(Kata::containsNoFive)
                 .count();
+    }
+
+    private static boolean containsNoFive(final int number) {
+        for (int x = Math.abs(number); x != 0; x /= 10) {
+            if (x % 10 == DIGIT_TO_FIND) return false;
+        }
+        return true;
     }
 }
